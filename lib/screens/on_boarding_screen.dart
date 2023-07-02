@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ott_app/models/theme.dart';
+import 'package:ott_app/screens/homeScreen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -22,6 +23,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void _signIn() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ));
   }
 
   Widget _buildSignInScreen() {
@@ -89,7 +98,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                _signIn();
+              },
             )
           ],
         ),
