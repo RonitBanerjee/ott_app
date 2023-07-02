@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ott_app/models/theme.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -9,6 +10,10 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   int _selectedIndex = 0;
+  TextEditingController _nameTextEditingController = TextEditingController();
+  TextEditingController _emailTextEditingController = TextEditingController();
+  TextEditingController _passwordTextEditingController =
+      TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -20,30 +25,163 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   Widget _buildSignInScreen() {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 40,
-          vertical: 64,
-        ),
-        child: Column(children: [
-          Image.asset('assets/netflix_logo.png'),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Email',
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Password',
-            ),
-          )
-        ]),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 40,
+        vertical: 64,
       ),
+      child: Column(children: [
+        Container(
+            margin: const EdgeInsets.only(
+              bottom: 32,
+            ),
+            child: Image.asset(
+              'assets/netflix_logo.png',
+              width: MediaQuery.sizeOf(context).width * 0.2,
+            )),
+        TextFormField(
+          decoration: const InputDecoration(
+            hintText: 'Email',
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        TextFormField(
+          decoration: const InputDecoration(
+            hintText: 'Password',
+          ),
+        ),
+        const SizedBox(
+          height: 32,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              child: SizedBox(
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.lightBlueAccent),
+                ),
+              ),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 0;
+                });
+              },
+            ),
+            InkWell(
+              child: SizedBox(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    color: CustomTheme.netflixRed,
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                ),
+              ),
+              onTap: () {},
+            )
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _buildSignUpScreen() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 40,
+        vertical: 64,
+      ),
+      child: Column(children: [
+        Container(
+            margin: const EdgeInsets.only(
+              bottom: 32,
+            ),
+            child: Image.asset(
+              'assets/netflix_logo.png',
+              width: MediaQuery.sizeOf(context).width * 0.2,
+            )),
+        const SizedBox(
+          height: 16,
+        ),
+        TextFormField(
+          controller: _nameTextEditingController,
+          decoration: const InputDecoration(
+            hintText: 'Name',
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        TextFormField(
+          controller: _emailTextEditingController,
+          decoration: const InputDecoration(
+            hintText: 'Email',
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        TextFormField(
+          controller: _passwordTextEditingController,
+          obscureText: true,
+          decoration: const InputDecoration(
+            hintText: 'Password',
+          ),
+        ),
+        const SizedBox(
+          height: 32,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              child: SizedBox(
+                child: const Text(
+                  'Sign In',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.lightBlueAccent),
+                ),
+              ),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 1;
+                });
+              },
+            ),
+            InkWell(
+              child: SizedBox(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    color: CustomTheme.netflixRed,
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                ),
+              ),
+              onTap: () {},
+            )
+          ],
+        ),
+      ]),
     );
   }
 
@@ -51,11 +189,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return IndexedStack(
       index: _selectedIndex,
       children: [
-        Align(
-          alignment: Alignment.center,
-          child: _buildSignInScreen(),
-        ),
-        // _buildSignUpScreen(),
+        _buildSignUpScreen(),
+        _buildSignInScreen(),
       ],
     );
   }

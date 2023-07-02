@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: OnBoardingScreen(),
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: OnBoardingScreen(),
+      ),
     );
   }
 }
