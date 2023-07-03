@@ -15,6 +15,12 @@ final Content sintelContent = Content(
 
 final List<Content> previews = [
   Content(
+    name: 'Stranger Things',
+    imageUrl: Assets.strangerThings2,
+    color: Colors.red,
+    titleImageUrl: Assets.atlaTitle,
+  ),
+  Content(
     name: 'Avatar The Last Airbender',
     imageUrl: Assets.atla,
     color: Colors.orange,
@@ -90,12 +96,12 @@ final List<Content> myList = [
 ];
 
 final List<Content> originals = [
-  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
+  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
   Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
   Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
   Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
-  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
+  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
   Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
   Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),

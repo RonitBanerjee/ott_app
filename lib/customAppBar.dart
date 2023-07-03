@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget {
       child: Container(
         height: 108,
         decoration: const BoxDecoration(
-          color: Colors.black12,
+          color: Colors.transparent,
         ),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),

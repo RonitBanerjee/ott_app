@@ -8,27 +8,53 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Container(
-      child: Row(
+      child: IndexedStack(
+        index: _selectedIndex,
         children: [
-          SizedBox(
-            width: width * 0.25,
-            child: Image.asset('assets/home.png'),
-          ),
-          SizedBox(
-            width: width * 0.25,
-            child: Image.asset('assets/search-line.png'),
-          ),
-          SizedBox(
-            width: width * 0.25,
-            child: Image.asset('assets/download.png'),
-          ),
-          SizedBox(
-            width: width * 0.25,
-            child: Image.asset('assets/menu.png'),
+          Row(
+            children: [
+              InkWell(
+                child: SizedBox(
+                  width: width * 0.25,
+                  child: Image.asset('assets/home.png'),
+                ),
+                onTap: () {
+                  _selectedIndex = 0;
+                },
+              ),
+              InkWell(
+                child: SizedBox(
+                  width: width * 0.25,
+                  child: Image.asset('assets/search-line.png'),
+                ),
+                onTap: () {
+                  _selectedIndex = 1;
+                },
+              ),
+              InkWell(
+                child: SizedBox(
+                  width: width * 0.25,
+                  child: Image.asset('assets/download-line.png'),
+                ),
+                onTap: () {
+                  _selectedIndex = 2;
+                },
+              ),
+              InkWell(
+                child: SizedBox(
+                  width: width * 0.25,
+                  child: Image.asset('assets/menu.png'),
+                ),
+                onTap: () {
+                  _selectedIndex = 3;
+                },
+              ),
+            ],
           ),
         ],
       ),
