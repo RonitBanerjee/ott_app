@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ott_app/screens/on_boarding_screen.dart';
+import 'package:ott_app/screens_for_mobile/on_boarding_screen.dart';
 
 void main() {
   runApp(MyApp());
