@@ -9,7 +9,7 @@ class Assets {
   static const String sintelVideoUrl =
       'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4';
 
-  static const String atla = '${_images}atla.jpg';
+  static const String atla = '${_images}alta.jpg';
   static const String atlaTitle = '${_images}atla_title.png';
 
   static const String blackMirror = '${_images}black_mirror.jpg';
@@ -21,19 +21,19 @@ class Assets {
   static const String caroleAndTuesdayTitle =
       '${_images}carole_and_tuesday_title.png';
 
-  static const String crown = '${_images}crown.jpg';
+  static const String crown = '${_images}thecrown.jpg';
   static const String crownTitle = '${_images}crown_title.png';
 
   static const String dogs = '${_images}dogs.jpg';
-  static const String explained = '${_images}explained.jpg';
+  static const String explained = '${_images}vikings.jpg';
   static const String laCasa = '${_images}laCasa.png';
   static const String htsdof = '${_images}htsdof.jpg';
   static const String kakegurui = '${_images}kakegurui.jpg';
   static const String strangerThings2 = '${_images}srtrangerThings2.jpg';
   static const String strangerthings = '${_images}strangerthings.jpg';
   static const String teotfw = '${_images}teotfw.jpg';
-  static const String thirteenReasonsWhy = '${_images}thirteen_reasons_why.jpg';
-  static const String tigerKing = '${_images}tiger_king.jpg';
+  static const String thirteenReasonsWhy = '${_images}13ReasonsWhy.jpg';
+  static const String tigerKing = '${_images}tigerking.jpg';
 
   static const String umbrellaAcademy = '${_images}umbrella_academy.jpg';
   static const String umbrellaAcademyTitle =

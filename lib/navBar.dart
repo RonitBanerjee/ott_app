@@ -12,7 +12,9 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
+    double height = MediaQuery.sizeOf(context).height;
     return Container(
+      height: height * 0.1,
       child: IndexedStack(
         index: _selectedIndex,
         children: [

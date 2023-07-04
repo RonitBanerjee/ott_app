@@ -109,8 +109,8 @@ final List<Content> originals = [
 ];
 
 final List<Content> trending = [
-  Content(name: 'Explained', imageUrl: Assets.explained),
-  Content(name: 'Avatar The Last Airbender', imageUrl: Assets.atla),
+  Content(name: 'Vikings', imageUrl: Assets.explained),
+  Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
   Content(name: 'Tiger King', imageUrl: Assets.tigerKing),
   Content(name: 'The Crown', imageUrl: Assets.crown),
   Content(name: 'Dogs', imageUrl: Assets.dogs),
