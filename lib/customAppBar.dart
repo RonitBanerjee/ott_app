@@ -11,19 +11,19 @@ class CustomAppBar extends StatelessWidget {
       child: Container(
         height: 108,
         decoration: const BoxDecoration(
-          color: Colors.black12,
+          color: Colors.transparent,
         ),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: width * 0.11,
-                child: Image.asset('assets/netflix_logo.png'),
+                width: width * 0.5,
+                child: Image.asset('assets/netflix_logo_full.png'),
               ),
-              SizedBox(
-                  width: width * 0.07, child: Image.asset('assets/search.png'))
+              // SizedBox(
+              //     width: width * 0.07, child: Image.asset('assets/search.png'))
             ],
           ),
         ),
