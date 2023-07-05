@@ -18,85 +18,37 @@ class _HomeInnerState extends State<HomeInner> {
       scrollDirection: Axis.vertical,
       physics: BouncingScrollPhysics(),
       children: [
-        Container(
-          width: double.infinity,
-          child: Image.asset(Assets.thirteenReasonsWhy),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            'Trending',
-            style: GoogleFonts.rubik(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        Container(
-          height: 200,
-          margin: EdgeInsets.only(left: 16),
-          child: ListView.builder(
-            itemCount: trending.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              Content content = trending[index];
-              return GestureDetector(
-                child: Container(
-                  height: 150,
-                  // width: 150,
-                  margin: EdgeInsets.only(right: 16),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      child: Image.asset(content.imageUrl ?? "")),
-                ),
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            'Recommended For You',
-            style: GoogleFonts.rubik(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        Container(
-          height: 200,
-          margin: EdgeInsets.only(left: 16),
-          child: ListView.builder(
-            itemCount: myList.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              Content content = originals[index];
-              return GestureDetector(
-                child: Container(
-                  height: 150,
-                  // width: 150,
-                  margin: EdgeInsets.only(right: 16),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      child: Image.asset(content.imageUrl ?? "")),
-                ),
-              );
-            },
-          ),
-        )
+        _buildCover(),
+        _buildSection("Recommnded For You", myList),
+        _buildSection("Trending", trending),
+        _buildSection("Netflix Originals", originals),
       ],
     );
   }
 
-  Widget _buildSection() {
-    return Row(
+  Widget _buildCover() {
+    return Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          child: Image.asset(
+            Assets.thirteenReasonsWhy,
+            color: Colors.black,
+            colorBlendMode: BlendMode.softLight,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSection(String sectionTitle, List<Content> sectionList) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(16),
           child: Text(
-            'Trending',
+            '${sectionTitle}',
             style: GoogleFonts.rubik(
               color: Colors.white,
               fontSize: 24,
@@ -105,13 +57,13 @@ class _HomeInnerState extends State<HomeInner> {
           ),
         ),
         Container(
-          height: 200,
+          height: 175,
           margin: EdgeInsets.only(left: 16),
           child: ListView.builder(
-            itemCount: trending.length,
+            itemCount: sectionList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              Content content = trending[index];
+              Content content = sectionList[index];
               return GestureDetector(
                 child: Container(
                   height: 150,
@@ -119,7 +71,11 @@ class _HomeInnerState extends State<HomeInner> {
                   margin: EdgeInsets.only(right: 16),
                   child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
-                      child: Image.asset(content.imageUrl ?? "")),
+                      child: Image.asset(
+                        content.imageUrl ?? "",
+                        color: Color.fromARGB(116, 0, 0, 0),
+                        colorBlendMode: BlendMode.softLight,
+                      )),
                 ),
               );
             },
