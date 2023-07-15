@@ -33,6 +33,7 @@ class Assets {
   static const String strangerthings = '${_images}strangerthings.jpg';
   static const String teotfw = '${_images}teotfw.jpg';
   static const String thirteenReasonsWhy = '${_images}13ReasonsWhy.jpg';
+  static const String mh370 = '${_images}mh370.jpg';
   static const String tigerKing = '${_images}tigerking.jpg';
 
   static const String umbrellaAcademy = '${_images}umbrellaAcademy.jpg';

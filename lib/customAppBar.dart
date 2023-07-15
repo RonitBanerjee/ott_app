@@ -7,25 +7,23 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
-    return SafeArea(
+    return Container(
+      height: 108,
+      decoration: const BoxDecoration(
+        color: Colors.transparent,
+      ),
       child: Container(
-        height: 108,
-        decoration: const BoxDecoration(
-          color: Colors.transparent,
-        ),
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: width * 0.5,
-                child: Image.asset('assets/netflix_logo_full.png'),
-              ),
-              // SizedBox(
-              //     width: width * 0.07, child: Image.asset('assets/search.png'))
-            ],
-          ),
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: width * 0.5,
+              child: Image.asset('assets/netflix_logo_full.png'),
+            ),
+            // SizedBox(
+            //     width: width * 0.07, child: Image.asset('assets/search.png'))
+          ],
         ),
       ),
     );

@@ -16,7 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return const Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
-            preferredSize: Size(double.infinity, 64), child: CustomAppBar()),
+          preferredSize: Size(double.infinity, 64),
+          child: CustomAppBar(),
+        ),
         backgroundColor: Colors.black12,
         bottomNavigationBar: BottomAppBar(
           child: NavBar(),

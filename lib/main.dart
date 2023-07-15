@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ott_app/screens_for_mobile/on_boarding_screen.dart';
 
 void main() {
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.dark(),
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.amikoTextTheme(
+          Theme.of(context).textTheme,
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
