@@ -86,21 +86,11 @@ final List<Content> myList = [
   Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
   Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
   Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
-  Content(name: 'Carole and Tuesday', imageUrl: Assets.caroleAndTuesday),
-  Content(name: 'Black Mirror', imageUrl: Assets.blackMirror),
-  Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
+  Content(name: 'Black Mirror', imageUrl: Assets.blackMirrorTitle),
   Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
-  Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
-  Content(name: 'Carole and Tuesday', imageUrl: Assets.caroleAndTuesday),
-  Content(name: 'Black Mirror', imageUrl: Assets.blackMirror),
 ];
 
 final List<Content> originals = [
-  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
-  Content(name: 'The Witcher', imageUrl: Assets.witcher),
-  Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
-  Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
-  Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
   Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
   Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),

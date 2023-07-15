@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ott_app/models/theme.dart';
-import 'package:ott_app/screens/homeScreen.dart';
+import 'package:ott_app/screens_for_mobile/homeScreen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});

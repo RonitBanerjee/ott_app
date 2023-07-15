@@ -13,7 +13,7 @@ class Assets {
   static const String atlaTitle = '${_images}atla_title.png';
 
   static const String blackMirror = '${_images}black_mirror.jpg';
-  static const String blackMirrorTitle = '${_images}black_mirror_title.png';
+  static const String blackMirrorTitle = '${_images}blackMirror.jpg';
 
   static const String breakingBad = '${_images}breakingBad.jpg';
 
@@ -33,12 +33,13 @@ class Assets {
   static const String strangerthings = '${_images}strangerthings.jpg';
   static const String teotfw = '${_images}teotfw.jpg';
   static const String thirteenReasonsWhy = '${_images}13ReasonsWhy.jpg';
+  static const String mh370 = '${_images}mh370.jpg';
   static const String tigerKing = '${_images}tigerking.jpg';
 
-  static const String umbrellaAcademy = '${_images}umbrella_academy.jpg';
+  static const String umbrellaAcademy = '${_images}umbrellaAcademy.jpg';
   static const String umbrellaAcademyTitle =
       '${_images}umbrella_academy_title.png';
 
-  static const String violetEvergarden = '${_images}violet_evergarden.jpg';
+  static const String violetEvergarden = '${_images}violetEvergarden.jpg';
   static const String witcher = '${_images}witcher.jpg';
 }

@@ -14,7 +14,7 @@ class _NavBarState extends State<NavBar> {
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
     return Container(
-      height: height * 0.1,
+      height: height * 0.08,
       child: IndexedStack(
         index: _selectedIndex,
         children: [
