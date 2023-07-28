@@ -4,7 +4,7 @@ import 'package:ott_app/models/models.dart';
 import 'package:ott_app/assets.dart';
 import 'package:ott_app/models/content_model.dart';
 
-final Content sintelContent = Content(
+const Content sintelContent = Content(
   name: 'Sintel',
   imageUrl: Assets.sintel,
   titleImageUrl: Assets.sintelTitle,
@@ -14,99 +14,112 @@ final Content sintelContent = Content(
 );
 
 final List<Content> previews = [
-  Content(
+  const Content(
     name: 'Stranger Things',
     imageUrl: Assets.strangerThings2,
     color: Colors.red,
     titleImageUrl: Assets.atlaTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Avatar The Last Airbender',
     imageUrl: Assets.atla,
     color: Colors.orange,
     titleImageUrl: Assets.atlaTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'The Crown',
     imageUrl: Assets.crown,
     color: Colors.red,
     titleImageUrl: Assets.crownTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'The Umbrella Academy',
     imageUrl: Assets.umbrellaAcademy,
     color: Colors.yellow,
     titleImageUrl: Assets.umbrellaAcademyTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Carole and Tuesday',
     imageUrl: Assets.caroleAndTuesday,
     color: Colors.lightBlueAccent,
     titleImageUrl: Assets.caroleAndTuesdayTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Black Mirror',
     imageUrl: Assets.blackMirror,
     color: Colors.green,
     titleImageUrl: Assets.blackMirrorTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Avatar The Last Airbender',
     imageUrl: Assets.atla,
     color: Colors.orange,
     titleImageUrl: Assets.atlaTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'The Crown',
     imageUrl: Assets.crown,
     color: Colors.red,
     titleImageUrl: Assets.crownTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'The Umbrella Academy',
     imageUrl: Assets.umbrellaAcademy,
     color: Colors.yellow,
     titleImageUrl: Assets.umbrellaAcademyTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Carole and Tuesday',
     imageUrl: Assets.caroleAndTuesday,
     color: Colors.lightBlueAccent,
     titleImageUrl: Assets.caroleAndTuesdayTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
-  Content(
+  const Content(
     name: 'Black Mirror',
     imageUrl: Assets.blackMirror,
     color: Colors.green,
     titleImageUrl: Assets.blackMirrorTitle,
+    videoUrl: "https://www.youtube.com/watch?v=mnd7sFt5c3A",
   ),
 ];
 
 final List<Content> myList = [
-  Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
-  Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
-  Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
-  Content(name: 'Black Mirror', imageUrl: Assets.blackMirrorTitle),
-  Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
+  const Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
+  const Content(
+      name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
+  const Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
+  const Content(name: 'Black Mirror', imageUrl: Assets.blackMirrorTitle),
+  const Content(
+      name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
 ];
 
 final List<Content> originals = [
-  Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
-  Content(name: 'The Witcher', imageUrl: Assets.witcher),
-  Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
-  Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
-  Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
+  const Content(name: 'Stranger Things', imageUrl: Assets.strangerThings2),
+  const Content(name: 'The Witcher', imageUrl: Assets.witcher),
+  const Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
+  const Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
+  const Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
 ];
 
 final List<Content> trending = [
-  Content(name: 'Vikings', imageUrl: Assets.explained),
-  Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
-  Content(name: 'Tiger King', imageUrl: Assets.tigerKing),
-  Content(name: 'The Crown', imageUrl: Assets.crown),
-  Content(name: 'Dogs', imageUrl: Assets.dogs),
-  Content(name: 'Explained', imageUrl: Assets.explained),
-  Content(name: 'Avatar The Last Airbender', imageUrl: Assets.atla),
-  Content(name: 'Tiger King', imageUrl: Assets.tigerKing),
-  Content(name: 'The Crown', imageUrl: Assets.crown),
-  Content(name: 'Dogs', imageUrl: Assets.dogs),
+  const Content(name: 'Vikings', imageUrl: Assets.explained),
+  const Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
+  const Content(name: 'Tiger King', imageUrl: Assets.tigerKing),
+  const Content(name: 'The Crown', imageUrl: Assets.crown),
+  const Content(name: 'Dogs', imageUrl: Assets.dogs),
+  const Content(name: 'Explained', imageUrl: Assets.explained),
+  const Content(name: 'Avatar The Last Airbender', imageUrl: Assets.atla),
+  const Content(name: 'Tiger King', imageUrl: Assets.tigerKing),
+  const Content(name: 'The Crown', imageUrl: Assets.crown),
+  const Content(name: 'Dogs', imageUrl: Assets.dogs),
 ];
