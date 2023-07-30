@@ -1,8 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ott_app/assets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ott_app/data/data.dart';
+import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/models/content_model.dart';
+import 'package:ott_app/screens_for_mobile/infoInner.dart';
+import 'package:ott_app/screens_for_mobile/infoPage.dart';
 
 class HomeInner extends StatefulWidget {
   const HomeInner({super.key});
@@ -22,12 +27,14 @@ class _HomeInnerState extends State<HomeInner> {
       physics: const BouncingScrollPhysics(),
       children: [
         _buildCover(screenHeight, screenWidth),
-        _buildSection("Recommnded For You", myList),
+        _buildSection("Recommended For You", myList),
         _buildSection("Trending", trending),
         _buildSection("Netflix Originals", originals),
       ],
     );
   }
+
+  Movie randomMovie = getRandomElement(movies);
 
   Widget _buildCover(double screenHeight, double screenWidth) {
     return Stack(
@@ -40,7 +47,7 @@ class _HomeInnerState extends State<HomeInner> {
               Container(
                 width: double.infinity,
                 child: Image.asset(
-                  Assets.strangerthings,
+                  randomMovie.thumbNailUrl,
                   color: Colors.black,
                   colorBlendMode: BlendMode.softLight,
                   fit: BoxFit.cover,
@@ -57,7 +64,7 @@ class _HomeInnerState extends State<HomeInner> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        _buildIconButton(Icons.add, "Add"),
+                        _buildIconButton(Icons.add, "My List"),
                         InkWell(
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -69,11 +76,23 @@ class _HomeInnerState extends State<HomeInner> {
                             child: const Text(
                               "Play",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
                             ),
                           ),
                         ),
-                        _buildIconButton(Icons.info, "Info"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      InfoPage(randomMovie: randomMovie),
+                                ));
+                          },
+                          child: _buildIconButton(Icons.info_outline, "Info"),
+                        )
                       ],
                     ),
                   ],
@@ -97,7 +116,7 @@ class _HomeInnerState extends State<HomeInner> {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 24,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w900,
             ),
           ),
         ),
@@ -138,7 +157,7 @@ _buildIconButton(IconData icon, String text) {
         children: [
           Icon(
             icon,
-            color: Colors.grey,
+            color: Colors.white,
             size: 24,
           ),
           const SizedBox(
@@ -147,7 +166,7 @@ _buildIconButton(IconData icon, String text) {
           Text(
             text,
             style: const TextStyle(
-              color: Colors.grey,
+              color: Colors.white,
             ),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ott_app/screens_for_mobile/homeScreen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -27,6 +28,7 @@ class _NavBarState extends State<NavBar> {
                 ),
                 onTap: () {
                   _selectedIndex = 0;
+                  _homeRedirect();
                 },
               ),
               InkWell(
@@ -61,5 +63,13 @@ class _NavBarState extends State<NavBar> {
         ],
       ),
     );
+  }
+
+  _homeRedirect() {
+    Navigator.pop(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ));
   }
 }
