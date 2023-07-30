@@ -1,25 +1,26 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ott_app/data/data.dart';
+import 'package:ott_app/data/movie.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 import "dart:math";
 
-class InfoInner extends StatefulWidget {
+class VideoPlayerView extends StatefulWidget {
   final String url;
   final DataSourceType dataSourceType;
-  const InfoInner({
+  const VideoPlayerView({
     super.key,
     required this.url,
     required this.dataSourceType,
   });
 
   @override
-  State<InfoInner> createState() => _InfoInnerState();
+  State<VideoPlayerView> createState() => _InfoInnerState();
 }
 
-class _InfoInnerState extends State<InfoInner> {
+class _InfoInnerState extends State<VideoPlayerView> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewiePlayerController;
 

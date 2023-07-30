@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ott_app/customAppBar.dart';
 import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/navBar.dart';
+import 'package:ott_app/screens_for_mobile/infoPageBody.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
-import 'package:ott_app/screens_for_mobile/infoInner.dart';
+import 'package:ott_app/screens_for_mobile/videoplayerview.dart';
 
 class InfoPage extends StatefulWidget {
   final Movie randomMovie;
@@ -27,9 +28,16 @@ class _InfoPageState extends State<InfoPage> {
         child: NavBar(),
         color: Colors.black,
       ),
-      body: InfoInner(
-        url: widget.randomMovie.trailerUrl,
-        dataSourceType: DataSourceType.network,
+      body: ListView(
+        children: [
+          VideoPlayerView(
+            url: widget.randomMovie.trailerUrl,
+            dataSourceType: DataSourceType.network,
+          ),
+          InfoPageBody(
+            randomMovie: widget.randomMovie,
+          )
+        ],
       ),
     );
   }

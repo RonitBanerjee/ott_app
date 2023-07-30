@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/homeScreen.dart';
 
 class NavBar extends StatefulWidget {
@@ -16,6 +17,9 @@ class _NavBarState extends State<NavBar> {
     double height = MediaQuery.sizeOf(context).height;
     return Container(
       height: height * 0.08,
+      decoration: BoxDecoration(
+        color: CustomTheme.navbarGrey,
+      ),
       child: IndexedStack(
         index: _selectedIndex,
         children: [

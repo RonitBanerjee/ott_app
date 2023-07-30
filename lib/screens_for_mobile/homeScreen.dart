@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.black12,
         bottomNavigationBar: BottomAppBar(
           child: NavBar(),
-          color: Colors.black,
+          notchMargin: 0,
         ),
         body: HomeInner());
   }
