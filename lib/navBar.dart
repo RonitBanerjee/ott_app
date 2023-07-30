@@ -66,7 +66,7 @@ class _NavBarState extends State<NavBar> {
   }
 
   _homeRedirect() {
-    Navigator.push(
+    Navigator.pop(
         context,
         MaterialPageRoute(
           builder: (context) => HomeScreen(),

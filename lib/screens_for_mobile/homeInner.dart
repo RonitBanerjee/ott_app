@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ott_app/assets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ott_app/data/data.dart';
+import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/models/content_model.dart';
+import 'package:ott_app/screens_for_mobile/infoInner.dart';
 import 'package:ott_app/screens_for_mobile/infoPage.dart';
 
 class HomeInner extends StatefulWidget {
@@ -30,6 +34,8 @@ class _HomeInnerState extends State<HomeInner> {
     );
   }
 
+  Movie randomMovie = getRandomElement(movies);
+
   Widget _buildCover(double screenHeight, double screenWidth) {
     return Stack(
       children: [
@@ -41,7 +47,7 @@ class _HomeInnerState extends State<HomeInner> {
               Container(
                 width: double.infinity,
                 child: Image.asset(
-                  Assets.strangerthings,
+                  randomMovie.thumbNailUrl,
                   color: Colors.black,
                   colorBlendMode: BlendMode.softLight,
                   fit: BoxFit.cover,
@@ -81,7 +87,8 @@ class _HomeInnerState extends State<HomeInner> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => InfoPage(),
+                                  builder: (context) =>
+                                      InfoPage(randomMovie: randomMovie),
                                 ));
                           },
                           child: _buildIconButton(Icons.info_outline, "Info"),

@@ -1,45 +1,85 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ott_app/data/data.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 import "dart:math";
 
 class InfoInner extends StatefulWidget {
-  final String? randomURL;
-  const InfoInner({super.key, this.randomURL});
+  final String url;
+  final DataSourceType dataSourceType;
+  const InfoInner({
+    super.key,
+    required this.url,
+    required this.dataSourceType,
+  });
 
   @override
   State<InfoInner> createState() => _InfoInnerState();
 }
 
 class _InfoInnerState extends State<InfoInner> {
-  String url = "https://www.youtube.com/watch?v=mnd7sFt5c3A";
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewiePlayerController;
 
-  final _controller = YoutubePlayerController.fromVideoId(
-    videoId: _getYoutubeVideoIdByURL(randomURL)!,
-    autoPlay: true,
-    endSeconds: 143,
-    params: const YoutubePlayerParams(
-      playsInline: true,
-      enableJavaScript: false,
-      showControls: false,
-      showVideoAnnotations: false,
-      strictRelatedVideos: false,
-      mute: true,
-      showFullscreenButton: true,
-      loop: true,
-    ),
-  );
+  @override
+  void initState() {
+    super.initState();
 
-  static String get randomURL => getRandomElement(previews).videoUrl ?? "";
+    switch (widget.dataSourceType) {
+      case DataSourceType.asset:
+        _videoPlayerController = VideoPlayerController.asset(widget.url);
+        break;
+      case DataSourceType.network:
+        _videoPlayerController =
+            VideoPlayerController.networkUrl(Uri.parse(widget.url));
+        break;
+      case DataSourceType.file:
+        _videoPlayerController = VideoPlayerController.file(File(widget.url));
+        break;
+      case DataSourceType.contentUri:
+        _videoPlayerController =
+            VideoPlayerController.contentUri(Uri.parse(widget.url));
+        break;
+    }
+
+    _chewiePlayerController = ChewieController(
+      videoPlayerController: _videoPlayerController,
+      autoPlay: true,
+      aspectRatio: 16 / 9,
+    );
+  }
+
+  void initializePlayer(VideoPlayerController videoPlayerController) async {
+    await videoPlayerController.initialize();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
+    _chewiePlayerController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        YoutubePlayer(
-          controller: _controller,
+        Text(
+          widget.dataSourceType.name.toUpperCase(),
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const Divider(),
+        AspectRatio(
           aspectRatio: 16 / 9,
+          child: Chewie(
+            controller: _chewiePlayerController,
+          ),
         )
       ],
     );

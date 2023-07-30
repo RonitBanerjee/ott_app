@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ott_app/customAppBar.dart';
+import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/navBar.dart';
+import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 import 'package:ott_app/screens_for_mobile/infoInner.dart';
 
 class InfoPage extends StatefulWidget {
-  const InfoPage({super.key});
+  final Movie randomMovie;
+  const InfoPage({super.key, required this.randomMovie});
 
   @override
   State<InfoPage> createState() => _InfoPageState();
@@ -13,7 +17,7 @@ class InfoPage extends StatefulWidget {
 class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 64),
         child: CustomAppBar(),
@@ -23,7 +27,10 @@ class _InfoPageState extends State<InfoPage> {
         child: NavBar(),
         color: Colors.black,
       ),
-      body: InfoInner(),
+      body: InfoInner(
+        url: widget.randomMovie.trailerUrl,
+        dataSourceType: DataSourceType.network,
+      ),
     );
   }
 }
