@@ -68,14 +68,6 @@ class _InfoInnerState extends State<VideoPlayerView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.dataSourceType.name.toUpperCase(),
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Divider(),
         AspectRatio(
           aspectRatio: 16 / 9,
           child: Chewie(
