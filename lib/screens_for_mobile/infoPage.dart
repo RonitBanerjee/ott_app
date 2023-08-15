@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ott_app/customAppBar.dart';
 import 'package:ott_app/data/movie.dart';
+import 'package:ott_app/innerPageTopBar.dart';
 import 'package:ott_app/navBar.dart';
 import 'package:ott_app/screens_for_mobile/infoPageBody.dart';
 import 'package:video_player/video_player.dart';
@@ -21,7 +22,7 @@ class _InfoPageState extends State<InfoPage> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 64),
-        child: CustomAppBar(),
+        child: SafeArea(child: InnerPageTopBar()),
       ),
       backgroundColor: Colors.black12,
       bottomNavigationBar: BottomAppBar(

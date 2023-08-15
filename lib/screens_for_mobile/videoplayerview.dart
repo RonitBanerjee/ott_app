@@ -10,10 +10,12 @@ import "dart:math";
 class VideoPlayerView extends StatefulWidget {
   final String url;
   final DataSourceType dataSourceType;
+  final bool? fullScreen;
   const VideoPlayerView({
     super.key,
     required this.url,
     required this.dataSourceType,
+    this.fullScreen = false,
   });
 
   @override
@@ -46,10 +48,11 @@ class _InfoInnerState extends State<VideoPlayerView> {
     }
 
     _chewiePlayerController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      aspectRatio: 16 / 9,
-    );
+        videoPlayerController: _videoPlayerController,
+        autoPlay: true,
+        aspectRatio: 16 / 9,
+        allowFullScreen: (widget.fullScreen == true) ? false : true,
+        fullScreenByDefault: (widget.fullScreen == true) ? true : false);
   }
 
   void initializePlayer(VideoPlayerController videoPlayerController) async {
@@ -63,17 +66,43 @@ class _InfoInnerState extends State<VideoPlayerView> {
     _chewiePlayerController.dispose();
   }
 
+  Widget _buildFullScreen({
+    required Widget child,
+  }) {
+    final size = _videoPlayerController.value.size;
+    final width = size.width;
+    final height = size.height;
+
+    return FittedBox(
+      fit: BoxFit.cover,
+      alignment: Alignment.topCenter,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: child,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AspectRatio(
-          aspectRatio: 16 / 9,
-          child: Chewie(
-            controller: _chewiePlayerController,
-          ),
-        )
+        (widget.fullScreen == false)
+            ? AspectRatio(
+                aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: Chewie(
+                  controller: _chewiePlayerController,
+                ),
+              )
+            : _buildFullScreen(
+                child: AspectRatio(
+                aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: Chewie(
+                  controller: _chewiePlayerController,
+                ),
+              ))
       ],
     );
   }

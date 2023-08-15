@@ -6,8 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ott_app/data/data.dart';
 import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/models/content_model.dart';
+import 'package:ott_app/screens_for_mobile/fullScreenPlay.dart';
 import 'package:ott_app/screens_for_mobile/videoplayerview.dart';
 import 'package:ott_app/screens_for_mobile/infoPage.dart';
+import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 class HomeInner extends StatefulWidget {
   const HomeInner({super.key});
@@ -66,6 +68,18 @@ class _HomeInnerState extends State<HomeInner> {
                       children: [
                         _buildIconButton(Icons.add, "My List"),
                         InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VideoPlayerView(
+                                  url: randomMovie.trailerUrl,
+                                  dataSourceType: DataSourceType.network,
+                                  fullScreen: true,
+                                ),
+                              ),
+                            );
+                          },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 18, vertical: 8),
@@ -134,7 +148,7 @@ class _HomeInnerState extends State<HomeInner> {
                   // width: 150,
                   margin: const EdgeInsets.only(right: 16),
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
                       child: Image.asset(
                         content.imageUrl ?? "",
                         color: const Color.fromARGB(116, 0, 0, 0),
