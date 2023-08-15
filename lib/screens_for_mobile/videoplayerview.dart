@@ -91,18 +91,16 @@ class _InfoInnerState extends State<VideoPlayerView> {
       children: [
         (widget.fullScreen == false)
             ? AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
+                aspectRatio: 16 / 9,
                 child: Chewie(
                   controller: _chewiePlayerController,
                 ),
               )
             : _buildFullScreen(
-                child: AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
                 child: Chewie(
                   controller: _chewiePlayerController,
                 ),
-              ))
+              )
       ],
     );
   }

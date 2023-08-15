@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/homeScreen.dart';
@@ -49,16 +51,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               width: MediaQuery.sizeOf(context).width * 0.2,
             )),
         TextFormField(
+          style: TextStyle(color: Colors.white),
           decoration: const InputDecoration(
             hintText: 'Email',
+            labelStyle: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(
           height: 16,
         ),
         TextFormField(
+          style: TextStyle(color: Colors.white),
           decoration: const InputDecoration(
             hintText: 'Password',
+            labelStyle: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(
@@ -99,6 +109,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
               onTap: () {
+                FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: _emailTextEditingController.text.trim(),
+                    password: _passwordTextEditingController.text.trim());
                 _signIn();
               },
             )
@@ -127,28 +140,40 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           height: 16,
         ),
         TextFormField(
+          style: TextStyle(color: Colors.white),
           controller: _nameTextEditingController,
           decoration: const InputDecoration(
             hintText: 'Name',
+            labelStyle: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(
           height: 16,
         ),
         TextFormField(
+          style: TextStyle(color: Colors.white),
           controller: _emailTextEditingController,
           decoration: const InputDecoration(
             hintText: 'Email',
+            labelStyle: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(
           height: 16,
         ),
         TextFormField(
+          style: TextStyle(color: Colors.white),
           controller: _passwordTextEditingController,
           obscureText: true,
           decoration: const InputDecoration(
             hintText: 'Password',
+            labelStyle: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(
@@ -188,7 +213,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: _emailTextEditingController.text.trim(),
+                    password: _passwordTextEditingController.text.trim());
+              },
             )
           ],
         ),

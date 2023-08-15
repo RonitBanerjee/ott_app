@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/homeScreen.dart';
@@ -56,10 +57,11 @@ class _NavBarState extends State<NavBar> {
               InkWell(
                 child: SizedBox(
                   width: width * 0.25,
-                  child: Image.asset('assets/menu.png'),
+                  child: Image.asset('assets/logout.png'),
                 ),
                 onTap: () {
                   _selectedIndex = 3;
+                  FirebaseAuth.instance.signOut();
                 },
               ),
             ],

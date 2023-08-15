@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/models/theme.dart';
+import 'package:ott_app/screens_for_mobile/videoplayerview.dart';
+import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 class InfoPageBody extends StatefulWidget {
   final Movie randomMovie;
@@ -78,12 +80,25 @@ class _InfoPageBodyState extends State<InfoPageBody> {
             padding: EdgeInsets.symmetric(vertical: 16),
             child: Column(
               children: [
-                _buildBigButton(
-                  Colors.black,
-                  Colors.white,
-                  Icons.play_arrow,
-                  "Play",
-                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VideoPlayerView(
+                            url: widget.randomMovie.trailerUrl,
+                            dataSourceType: DataSourceType.network,
+                            fullScreen: true,
+                          ),
+                        ),
+                      );
+                    },
+                    child: _buildBigButton(
+                      Colors.black,
+                      Colors.white,
+                      Icons.play_arrow,
+                      "Play",
+                    )),
                 const SizedBox(
                   height: 16,
                 ),
@@ -184,7 +199,12 @@ Widget _buildTrendingCategoryTag() {
   );
 }
 
-_buildBigButton(Color textColor, Color bgColor, IconData icon, String text) {
+_buildBigButton(
+  Color textColor,
+  Color bgColor,
+  IconData icon,
+  String text,
+) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 16),
     decoration:
