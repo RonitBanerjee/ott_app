@@ -17,12 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
           preferredSize: Size(double.infinity, 64),
-          child: CustomAppBar(),
+          child: SafeArea(child: CustomAppBar()),
         ),
         backgroundColor: Colors.black12,
         bottomNavigationBar: BottomAppBar(
           child: NavBar(),
-          color: Colors.black,
+          notchMargin: 0,
         ),
         body: HomeInner());
   }

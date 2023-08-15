@@ -1,25 +1,28 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ott_app/data/data.dart';
+import 'package:ott_app/data/movie.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 import "dart:math";
 
-class InfoInner extends StatefulWidget {
+class VideoPlayerView extends StatefulWidget {
   final String url;
   final DataSourceType dataSourceType;
-  const InfoInner({
+  final bool? fullScreen;
+  const VideoPlayerView({
     super.key,
     required this.url,
     required this.dataSourceType,
+    this.fullScreen = false,
   });
 
   @override
-  State<InfoInner> createState() => _InfoInnerState();
+  State<VideoPlayerView> createState() => _InfoInnerState();
 }
 
-class _InfoInnerState extends State<InfoInner> {
+class _InfoInnerState extends State<VideoPlayerView> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewiePlayerController;
 
@@ -45,10 +48,11 @@ class _InfoInnerState extends State<InfoInner> {
     }
 
     _chewiePlayerController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      aspectRatio: 16 / 9,
-    );
+        videoPlayerController: _videoPlayerController,
+        autoPlay: true,
+        aspectRatio: 16 / 9,
+        allowFullScreen: (widget.fullScreen == true) ? false : true,
+        fullScreenByDefault: (widget.fullScreen == true) ? true : false);
   }
 
   void initializePlayer(VideoPlayerController videoPlayerController) async {
@@ -62,25 +66,41 @@ class _InfoInnerState extends State<InfoInner> {
     _chewiePlayerController.dispose();
   }
 
+  Widget _buildFullScreen({
+    required Widget child,
+  }) {
+    final size = _videoPlayerController.value.size;
+    final width = size.width;
+    final height = size.height;
+
+    return FittedBox(
+      fit: BoxFit.cover,
+      alignment: Alignment.topCenter,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: child,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.dataSourceType.name.toUpperCase(),
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Divider(),
-        AspectRatio(
-          aspectRatio: 16 / 9,
-          child: Chewie(
-            controller: _chewiePlayerController,
-          ),
-        )
+        (widget.fullScreen == false)
+            ? AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Chewie(
+                  controller: _chewiePlayerController,
+                ),
+              )
+            : _buildFullScreen(
+                child: Chewie(
+                  controller: _chewiePlayerController,
+                ),
+              )
       ],
     );
   }

@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/homeScreen.dart';
 
 class NavBar extends StatefulWidget {
@@ -16,6 +18,9 @@ class _NavBarState extends State<NavBar> {
     double height = MediaQuery.sizeOf(context).height;
     return Container(
       height: height * 0.08,
+      decoration: BoxDecoration(
+        color: CustomTheme.navbarGrey,
+      ),
       child: IndexedStack(
         index: _selectedIndex,
         children: [
@@ -52,10 +57,11 @@ class _NavBarState extends State<NavBar> {
               InkWell(
                 child: SizedBox(
                   width: width * 0.25,
-                  child: Image.asset('assets/menu.png'),
+                  child: Image.asset('assets/logout.png'),
                 ),
                 onTap: () {
                   _selectedIndex = 3;
+                  FirebaseAuth.instance.signOut();
                 },
               ),
             ],
