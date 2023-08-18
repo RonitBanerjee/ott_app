@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ott_app/main.dart';
 import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/homeScreen.dart';
 
@@ -112,7 +113,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: _emailTextEditingController.text.trim(),
                     password: _passwordTextEditingController.text.trim());
-                _signIn();
+                MyApp();
+                // _signIn();
               },
             )
           ],
@@ -120,6 +122,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ]),
     );
   }
+
+  // Future<bool> login(String email, String password) async {
+  //   final user = (await FirebaseAuth.instance
+  //           .signInWithEmailAndPassword(email: email, password: password))
+  //       .user;
+  //   if (user.isEmailVerified) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   Widget _buildSignUpScreen() {
     return Padding(

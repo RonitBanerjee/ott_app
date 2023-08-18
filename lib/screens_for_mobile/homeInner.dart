@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ott_app/data/data.dart';
 import 'package:ott_app/data/movie.dart';
 import 'package:ott_app/models/content_model.dart';
+import 'package:ott_app/models/theme.dart';
 import 'package:ott_app/screens_for_mobile/fullScreenPlay.dart';
 import 'package:ott_app/screens_for_mobile/videoplayerview.dart';
 import 'package:ott_app/screens_for_mobile/infoPage.dart';
@@ -30,7 +31,7 @@ class _HomeInnerState extends State<HomeInner> {
       children: [
         _buildCover(screenHeight, screenWidth),
         _buildSection("Recommended For You", myList),
-        _buildSection("Trending", trending),
+        _buildWithIndex("Trending", trending),
         _buildSection("Netflix Originals", originals),
       ],
     );
@@ -48,7 +49,7 @@ class _HomeInnerState extends State<HomeInner> {
             children: [
               Container(
                 width: double.infinity,
-                child: Image.asset(
+                child: Image.network(
                   randomMovie.thumbNailUrl,
                   color: Colors.black,
                   colorBlendMode: BlendMode.softLight,
@@ -99,11 +100,12 @@ class _HomeInnerState extends State<HomeInner> {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      InfoPage(randomMovie: randomMovie),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    InfoPage(randomMovie: randomMovie),
+                              ),
+                            );
                           },
                           child: _buildIconButton(Icons.info_outline, "Info"),
                         )
@@ -119,7 +121,7 @@ class _HomeInnerState extends State<HomeInner> {
     );
   }
 
-  Widget _buildSection(String sectionTitle, List<Content> sectionList) {
+  Widget _buildSection(String sectionTitle, List<Movie> sectionList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -141,20 +143,99 @@ class _HomeInnerState extends State<HomeInner> {
             itemCount: sectionList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              Content content = sectionList[index];
+              Movie content = sectionList[index];
               return GestureDetector(
                 child: Container(
-                  height: 150,
-                  // width: 150,
                   margin: const EdgeInsets.only(right: 16),
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      child: Image.asset(
-                        content.imageUrl ?? "",
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      child: Image.network(
+                        content.thumbNailUrl ?? "",
                         color: const Color.fromARGB(116, 0, 0, 0),
                         colorBlendMode: BlendMode.softLight,
                       )),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => InfoPage(randomMovie: content),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildWithIndex(String sectionTitle, List<Movie> sectionList) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            '${sectionTitle}',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        Container(
+          height: 175,
+          margin: const EdgeInsets.only(left: 16),
+          child: ListView.builder(
+            itemCount: sectionList.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              Movie content = sectionList[index];
+              return GestureDetector(
+                child: Row(
+                  children: [
+                    Text(
+                      (index + 1).toString(),
+                      style: TextStyle(
+                        fontSize: 120,
+                        fontWeight: FontWeight.w900,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = const Color.fromARGB(255, 136, 136, 136),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        // width: 150,
+                        margin: const EdgeInsets.only(right: 16),
+                        child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            child: Image.network(
+                              content.thumbNailUrl ?? "",
+                              color: const Color.fromARGB(116, 0, 0, 0),
+                              colorBlendMode: BlendMode.softLight,
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => InfoPage(randomMovie: content),
+                    ),
+                  );
+                },
               );
             },
           ),
